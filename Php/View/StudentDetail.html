@@ -1,0 +1,19 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Thong tin chi tiet sinh vien</title>
+</head>
+<body>
+    <h2>Chi tiet sinh vien:</h2>
+    <?php
+        if(isset($student)) {
+            echo "<p><b>Name:</b> " . $student->getName() . "</p>";
+            echo "<p><b>Age:</b> " . $student->getAge() . "</p>";
+            echo "<p><b>University:</b> " . $student->getUniversity() . "</p><br>";
+        } else {
+            echo "<p>Student not found.</p>";
+        }
+    ?>
+    <p><a href="javascript:history.back()">Back</a></p>
+</body>
+</html>

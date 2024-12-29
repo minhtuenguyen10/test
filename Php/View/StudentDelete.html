@@ -1,0 +1,15 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Xóa Sinh Viên</title>
+</head>
+<body>
+    <h2>Xóa Sinh Viên</h2>
+    <form action="../Controller/C_Student.php" method="post">
+        <input type="hidden" name="action" value="Delete">
+        <input type="hidden" name="id" value="<?php echo $student->id; ?>">
+        Are you sure you want to delete this student? <br>
+        <input type="submit" value="Delete">
+    </form>
+</body>
+</html>

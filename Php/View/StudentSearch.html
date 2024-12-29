@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm kiếm Sinh Viên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            display: none;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tìm kiếm Sinh Viên</h2>
+    <form action="../Controller/C_Student.php" method="get">
+        <label for="field">Chọn trường:</label>
+        <select id="field" name="field">
+            <option value="name">Tên</option>
+            <option value="university">Trường Đại Học</option>
+            <option value="age">Tuổi</option>
+        </select><br><br>
+
+        <label for="value">Nhập giá trị:</label>
+        <input type="text" id="value" name="value" required><br><br>
+
+        <input type="submit" name="search" value="Tìm kiếm">
+    </form>
+
+    <h3>Kết quả tìm kiếm:</h3>
+    <?php if (isset($studentList) && !empty($studentList)): ?>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Trường Đại Học</th>
+                <th>Tuổi</th>
+            </tr>
+            <?php foreach ($studentList as $student): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($student->id); ?></td>
+                    <td><a href="../Controller/C_Student.php?stid=<?php echo $student->id; ?>"><?php echo htmlspecialchars($student->name); ?></a></td>
+                    <td><?php echo htmlspecialchars($student->university); ?></td>
+                    <td><?php echo htmlspecialchars($student->age); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    <?php else: ?>
+        <p class="error">Không tìm thấy sinh viên nào.</p>
+    <?php endif; ?>
+</body>
+</html>
